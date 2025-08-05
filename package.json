@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "next dev --turbopack",
+    "dev": "PORT=3068 next dev --turbopack",
     "start": "next start"
   },
   "dependencies": {
