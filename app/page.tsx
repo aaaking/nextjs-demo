@@ -2,6 +2,7 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import styles from '@/app/ui/home.module.css';
+import { lusitana } from '@/app/ui/fonts';
 
 export default function Page() {
   return (
@@ -15,6 +16,9 @@ export default function Page() {
             <div className="relative w-0 h-0 border-l-[20px] border-r-[20px] border-b-[30px] border-l-transparent border-r-transparent border-b-black" />
             <div className={styles.shape} />
           </div>
+          <p className={`${lusitana.className} text-xl text-gray-800 md:text-3xl md:leading-normal`} >
+            abcdef
+          </p>
           <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
             <strong>Welcome to Acme.</strong> This is the example for the{' '}
             <a href="https://nextjs.org/learn/" className="text-blue-500">
