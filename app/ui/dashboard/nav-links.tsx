@@ -26,6 +26,7 @@ const links = [
 export default function NavLinks() {
 
   const pathname = usePathname();
+
   useEffect(() => {
     console.log("pathname==", pathname)
   }, [pathname])
