@@ -8,7 +8,7 @@ import { fetchRevenue, fetchLatestInvoices, fetchCardData } from '../lib/data';
 
 export default async function Page() {
 
-const dataAll = await Promise.all([
+  const dataAll = await Promise.all([
     fetchRevenue(),
     fetchLatestInvoices(),
     fetchCardData(),
