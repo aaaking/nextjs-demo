@@ -4,28 +4,22 @@ import RevenueChart from '@/app/ui/dashboard/revenue-chart';
 import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
 import { lusitana } from '@/app/ui/fonts';
 import { Suspense } from 'react';
-import { RevenueChartSkeleton } from '@/app/ui/skeletons';
+import { RevenueChartSkeleton, LatestInvoicesSkeleton } from '@/app/ui/skeletons';
 import { fetchLatestInvoices, fetchCardData } from '../../lib/data';
 
 
 export default async function Page() {
 
-  // console.log('testslow1', Date.now()/1000.0);
-  // let ap = new Promise((resolve) => setTimeout(resolve, 3000));
-  // await ap;
-  // console.log('testslow2', Date.now()/1000.0);
+  console.log('testslow1', Date.now()/1000.0);
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  console.log('testslow2', Date.now()/1000.0);
 
-  const dataAll = await Promise.all([
-    fetchLatestInvoices(),
-    fetchCardData(),
-  ]);
-  const latestInvoices = dataAll[0];
   const {
     numberOfInvoices,
     numberOfCustomers,
     totalPaidInvoices,
     totalPendingInvoices,
-  } = dataAll[1];
+  } = await fetchCardData();
 
   return (
     <main>
@@ -46,7 +40,9 @@ export default async function Page() {
         <Suspense fallback={<RevenueChartSkeleton />}>
           <RevenueChart />
         </Suspense>
-        <LatestInvoices latestInvoices={latestInvoices} />
+        <Suspense fallback={<LatestInvoicesSkeleton />}>
+          <LatestInvoices />
+        </Suspense>
       </div>
     </main>
   );

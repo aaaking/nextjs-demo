@@ -18,9 +18,9 @@ export async function fetchRevenue() {
 
     console.log('Fetching revenue data...', Date.now()/1000.0);
     // await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('Data fetch completed after 5 seconds.', Date.now()/1000.0);
 
     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
-    console.log('Data fetch completed after 5 seconds.', Date.now()/1000.0);
 
     return data;
   } catch (error) {
@@ -42,6 +42,9 @@ export async function fetchLatestInvoices() {
       ...invoice,
       amount: formatCurrency(invoice.amount),
     }));
+    console.log('zzhtest latestInvoicePending', Date.now()/1000.0);
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log('zzhtest latestInvoiceEnd', Date.now()/1000.0);
     return latestInvoices;
   } catch (error) {
     console.error('Database Error:', error);
