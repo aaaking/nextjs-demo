@@ -10,9 +10,11 @@ import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/a
 
 export default async function Page() {
 
-  console.log('testslow1', Date.now()/1000.0);
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-  console.log('testslow2', Date.now()/1000.0);
+  if (0) {
+    console.log('testslow1', Date.now()/1000.0);
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('testslow2', Date.now()/1000.0);
+  }
 
   return (
     <main>
