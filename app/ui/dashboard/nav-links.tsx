@@ -1,4 +1,3 @@
-'use client';
 
 import {
   UserGroupIcon,
@@ -7,7 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import clsx from 'clsx';
 
 
@@ -27,9 +26,9 @@ export default function NavLinks() {
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log("pathname==", pathname)
-  }, [pathname])
+  // useEffect(() => {
+  //   console.log("pathname==", pathname)
+  // }, [pathname])
 
   return (
     <>
