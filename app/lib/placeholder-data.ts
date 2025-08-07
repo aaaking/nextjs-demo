@@ -46,6 +46,12 @@ const customers = [
     email: 'balazs@orban.com',
     image_url: '/customers/balazs-orban.png',
   },
+  {
+    id: 'cd9e3e46-3490-8c18-3149-e1f8dfd9ddd1',
+    name: 'Zhihui Zhou',
+    email: '1059084407@qq.com',
+    image_url: '/customers/balazs-orban.png',
+  },
 ];
 
 const invoices = [
