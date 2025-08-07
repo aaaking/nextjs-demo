@@ -13,7 +13,6 @@ export const formatDateToLocal = (
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
-    fractionalSecondDigits: 3, // 关键：显示3位毫秒
     second: '2-digit',
     minute: 'numeric',
     hour: '2-digit',
@@ -21,8 +20,27 @@ export const formatDateToLocal = (
     month: 'short',
     year: 'numeric',
   };
-  const formatter = new Intl.DateTimeFormat(locale, options);
-  return formatter.format(date);
+  // const formatter = new Intl.DateTimeFormat(locale, options);
+  // return formatter.format(date);
+
+  try {
+    // 尝试添加毫秒显示
+    const msOptions: Intl.DateTimeFormatOptions = {
+      ...options,
+      fractionalSecondDigits: 3,
+    };
+    // 检测浏览器是否支持毫秒格式化
+    if (new Intl.DateTimeFormat(undefined, msOptions).resolvedOptions().hasOwnProperty('fractionalSecondDigits')) {
+      return new Intl.DateTimeFormat(locale, msOptions).format(date);
+    }
+  } catch (e) {
+    console.warn('error for format time str')
+    // 继续使用降级方案
+  }
+  // 降级方案：手动拼接毫秒
+  const baseFormatted = new Intl.DateTimeFormat(locale, options).format(date);
+  const milliseconds = date.getMilliseconds().toString().padStart(3, '0');
+  return `${baseFormatted}.${milliseconds}`;
 };
 
 export const generateYAxis = (revenue: Revenue[]) => {
