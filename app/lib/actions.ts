@@ -36,3 +36,8 @@ export async function createInvoice(formData: FormData) {
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
 }
+
+
+export async function updateInvoice(id: string, formData: FormData) {
+  // console.log('update invoice id=' + id, formData)
+}
