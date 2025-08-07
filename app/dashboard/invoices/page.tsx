@@ -5,6 +5,7 @@ import { CreateInvoice } from '@/app/ui/invoices/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
+import { fetchInvoicesPages } from '@/app/lib/data';
 
 export default async function Page(
   props: {
@@ -19,6 +20,7 @@ export default async function Page(
   let {query = '', page: currentPage = 1} = searchParams || {};
   currentPage = Number(currentPage)
   // console.log('searchParams=====', searchParams, query, currentPage) // 每次进入路由时, 这个值都会打印一次
+  const totalPages = await fetchInvoicesPages(query);
 
   return (
     <div className="w-full">
@@ -33,7 +35,7 @@ export default async function Page(
         <Table query={query} currentPage={currentPage} />
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
-        {/* <Pagination totalPages={totalPages} /> */}
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   );
