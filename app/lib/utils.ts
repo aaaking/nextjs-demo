@@ -13,6 +13,7 @@ export const formatDateToLocal = (
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
+    fractionalSecondDigits: 3, // 关键：显示3位毫秒
     second: '2-digit',
     minute: 'numeric',
     hour: '2-digit',
