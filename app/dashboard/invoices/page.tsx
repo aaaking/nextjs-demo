@@ -16,7 +16,7 @@ export default async function Page(
 ) {
 
   const searchParams = await props.searchParams;
-  const {query = null, page: currentPage = null} = searchParams || {};
+  const {query = '', page: currentPage = 1} = searchParams || {};
   // console.log('searchParams=====', searchParams, query, currentPage) // 每次进入路由时, 这个值都会打印一次
 
   return (
@@ -28,9 +28,9 @@ export default async function Page(
         <Search placeholder="Search invoices..." />
         <CreateInvoice />
       </div>
-      {/*  <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+       <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />
-      </Suspense> */}
+      </Suspense>
       <div className="mt-5 flex w-full justify-center">
         {/* <Pagination totalPages={totalPages} /> */}
       </div>
