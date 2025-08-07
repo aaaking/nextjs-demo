@@ -9,10 +9,13 @@ export const formatCurrency = (amount: number) => {
 
 export const formatDateToLocal = (
   dateStr: string,
-  locale: string = 'en-US',
+  locale: string = 'zh-CN'//'en-US',
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
+    second: '2-digit',
+    minute: 'numeric',
+    hour: '2-digit',
     day: 'numeric',
     month: 'short',
     year: 'numeric',
