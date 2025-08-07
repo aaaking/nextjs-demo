@@ -20,9 +20,6 @@ export const formatDateToLocal = (
     month: 'short',
     year: 'numeric',
   };
-  // const formatter = new Intl.DateTimeFormat(locale, options);
-  // return formatter.format(date);
-
   try {
     // 尝试添加毫秒显示
     const msOptions: Intl.DateTimeFormatOptions = {
