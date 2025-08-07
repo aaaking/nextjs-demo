@@ -60,4 +60,6 @@ export async function updateInvoice(id: string, formData: FormData) {
 
 export async function deleteInvoice(id: string, formData: FormData) {
   // console.log('delete invoice id=' + id, formData)
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  revalidatePath('/dashboard/invoices');
 }
