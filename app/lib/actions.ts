@@ -25,7 +25,9 @@ export async function createInvoice(formData: FormData) {
     status: formData.get('status'),
   });
   const amountInCents = amount * 100;
-  const date = new Date().toISOString()//.split('T')[0];
+  // date字段的类型是DATE。在PostgreSQL中，DATE类型只存储年月日（也就是精确到天），不存储时间部分。所以即使你插入一个带有时分秒的时间戳，它也会被截断为日期部分。
+  // 如果你想要存储精确到时分秒的时间，你应该使用TIMESTAMP或TIMESTAMPTZ（带时区的时间戳）类型。
+  const date = new Date().toISOString().split('T')[0];
   await sql`
     INSERT INTO invoices (customer_id, amount, status, date)
     VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
