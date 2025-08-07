@@ -18,6 +18,7 @@ export default async function Page(
   const searchParams = await props.searchParams;
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
+  // console.log('searchParams=====', searchParams) // 每次进入路由时, 这个值都会打印一次
 
   return (
     <div className="w-full">
