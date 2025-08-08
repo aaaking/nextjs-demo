@@ -17,8 +17,8 @@ export default async function Page(
 ) {
 
   const searchParams = await props.searchParams;
-  let {query = '', page: currentPage = 1} = searchParams || {};
-  currentPage = Number(currentPage)
+  const {query = '', page = 1} = searchParams || {};
+  const currentPage = Number(page)
   // console.log('searchParams=====', searchParams, query, currentPage) // 每次进入路由时, 这个值都会打印一次
   const totalPages = await fetchInvoicesPages(query);
 
