@@ -15,6 +15,11 @@ export type State = {
     status?: string[];
   };
   message?: string | null;
+  formData?: {
+    customerId?: string;
+    amount?: string;
+    status?: string;
+  };
 };
 
 const FormSchema = z.object({
@@ -41,6 +46,11 @@ export async function createInvoice(prevState: State, formData: FormData) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       message: 'Missing Fields. Failed to Create Invoice.',
+      formData: {
+        customerId: formData.get('customerId') as string,
+        amount: formData.get('amount') as string,
+        status: formData.get('status') as string,
+      },
     };
   }
   const { customerId, amount, status } = validatedFields.data;
@@ -63,6 +73,11 @@ export async function createInvoice(prevState: State, formData: FormData) {
     // If a database error occurs, return a more specific error.
     return {
       message: 'Database Error: Failed to Create Invoice.',
+      formData: {
+        customerId: formData.get('customerId') as string,
+        amount: formData.get('amount') as string,
+        status: formData.get('status') as string,
+      },
     };
   }
   // console.log('create invoice start', formData)
