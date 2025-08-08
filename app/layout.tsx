@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: '%s | ZhouShop',
     default: 'ZhouShop',
   },
-  icons: "favicon.ico",
+  icons: "logo.png",
   description: 'The official Next.js Learn Dashboard built with App Router.',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
